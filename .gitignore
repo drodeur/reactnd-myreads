@@ -1,0 +1,4 @@
+node_modules
+public/assets
+yarn.lock
+.DS_Store
