@@ -1,8 +1,10 @@
 export default {
   'fr-CA': {
-    'siteName': 'Lectures'
+    'siteName': 'Lectures',
+    'searchBy': 'Chercher par auteur ou par titre...'
   },
   'en-US': {
-    'siteName': 'MyReads'
+    'siteName': 'MyReads',
+    'searchBy': 'Search by author or title...'
   }
 };
