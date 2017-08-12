@@ -7,7 +7,10 @@ import { IntlProvider, addLocaleData } from 'react-intl';
 import fr from 'react-intl/locale-data/fr';
 import en from 'react-intl/locale-data/en';
 
+import DefaultLayoutRessource from 'project-ressources/DefaultLayout';
 import HomeRessource from 'project-ressources/Home';
+import PreviewRessource from 'project-ressources/Preview';
+import SearchRessource from 'project-ressources/Search';
 
 export default class AppMessage extends Component {
   static propTypes = {
@@ -26,7 +29,7 @@ export default class AppMessage extends Component {
 
   componentWillMount() {
     const language = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || DEFAULT_LANGUAGE;
-    this.state.language = (!!language.indexOf('fr')) ? DEFAULT_LANGUAGE : 'fr-CA';
+    this.state.language = (language.indexOf('fr') === -1) ? DEFAULT_LANGUAGE : 'fr-CA';
     this.state.messages = this.getMessages(this.state.language);
 
     addLocaleData([...en, ...fr]);
@@ -52,7 +55,10 @@ export default class AppMessage extends Component {
 
   getMessages(language) {
     return {
+      DefaultLayout: DefaultLayoutRessource[language],
       Home: HomeRessource[language],
+      Preview: PreviewRessource[language],
+      Search: SearchRessource[language]
     };
   }
 

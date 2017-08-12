@@ -17,8 +17,7 @@ export default class DefaultLayout extends Component {
   render() {
     return (
       <div>
-        <span>DefaultLayout</span>
-        {this.props.children}
+        <span>Search</span>
       </div>
     );
   };
