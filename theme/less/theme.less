@@ -108,6 +108,29 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
 }
 
+.add {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 30px;
+  text-align: center;
+  background-color: @PRIMARY_COLOR;
+  color: @FONT_LIGHT;
+  font-size: 25px;
+  opacity: 0.5;
+  transition: all 0.5s;
+}
+
+.add:hover {
+  opacity: 1;
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 .thumbnail:hover .caption > span {
   -webkit-animation: zoomIn 0.5s forwards; /* Chrome, Opera 15+, Safari 5+ */
           animation: zoomIn 0.5s forwards; /* Chrome, Firefox 16+, IE 10+, Opera */
