@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import ShelfBook from './ShelfBook';
 
+import classname from 'classname';
+import theme from 'project-theme/less/theme';
+
 export default class Shelf extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
@@ -18,8 +21,10 @@ export default class Shelf extends Component {
 
     return (
       <div className="row">
-        <div className="col-sm-12">{title}</div>
-        {books.map(book => <ShelfBook key={book.id} {...book} />)}
+        <h2 className={classname('col-sm-12', theme.subtitle)}>{title}</h2>
+        <div className={classname(theme.center, theme.clear, theme.overflow)}>
+          {books.map(book => <ShelfBook key={book.id} {...book} />)}
+        </div>
       </div>
     );
   };
