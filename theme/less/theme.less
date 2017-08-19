@@ -16,9 +16,13 @@ body {
 
 .center {text-align: center;}
 .clear {clear: both;}
+.content {margin-top: 50px;}
 .inline {display: inline-block;}
 .overflow {overflow: hidden;}
 .relative {position: relative;}
+
+
+/****************************** TITLE *****************************/
 
 .subtitle {
   font-family: "Roboto Slab", Arial, sans-serif;
@@ -27,136 +31,45 @@ body {
   text-align: center;
 }
 
-.shelfWrapper {margin-top: 5px;}
+/*************************** MENU THEME ***************************/
 
-.shelfWrapper:before, .shelfWrapper:after {
-  position: absolute;
-  content: ' ';
-  display: block;
-  width: 50px;
-  height: 72px;
-  bottom: 45px;
+
+.menuSelect {width: 200px;}
+.menuSelect :global(.Select-control) {
+  background: lighten(@THEME_MENU_DARK, 5%);
+  color: @FONT_LIGHT;
+  border-color: lighten(@THEME_MENU_DARK, 10%);
 }
 
-.shelfWrapper:before { 
-  left: -50px;
-  background: url('../shelf-left.png') no-repeat;
-}
-
-.shelfWrapper:after { 
-  right: -50px;
-  background: url('../shelf-right.png') no-repeat;
-}
-
-.shelf {
-  position: relative;
-  z-index: 1;
-  top: -45px;
-  height: 72px;
-  background: url('../shelf.png') repeat-x;
-}
-
-.thumbnail {
-  margin: 5px auto;
-  width: 125px;
-  height: 200px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.thumbnail .caption {
-  display: block;
-  padding: 10px;
-  font-size: 16px;
+.menuSelect :global(.Select-input > input) {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.65);
-  color: @FONT_LIGHT;
-  display: none;
-}
-
-.thumbnail .caption > span {
-  display: block;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-.thumbnail .author {
-  display: block;
-  margin-top: 10px;
-  font-size: 12px;
-  color: darken(@FONT_LIGHT, 25%);
-}
-
-.thumbnail:hover .caption {display: block;}
-.thumbnail .author + .author {margin-top: 0;}
-
-.bookCenter {
-  position: relative;
-  z-index: 100;
-  width: 135px;
-  height: 210px;
-  margin: 0 20px;
-  float: none;
+  background: none transparent;
+  border: 0 none;
+  box-shadow: none;
+  cursor: default;
   display: inline-block;
-  vertical-align: top;
-  background-color: @BACKGROUND_LIGHT;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  outline: none;
+  line-height: 14px;
+  padding: 8px 0 12px;
+  -webkit-appearance: none;
 }
 
-.add {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  border-radius: 30px;
-  text-align: center;
-  background-color: @PRIMARY_COLOR;
+.menuSelect:global(.has-value.Select--single > .Select-control .Select-value .Select-value-label) {color: @FONT_LIGHT;}
+.menuSelect :global(.Select-menu-outer) {border-color: lighten(@THEME_MENU_DARK, 10%);}
+
+.menuSelect :global(.Select-option) {
+  background: lighten(@THEME_MENU_DARK, 5%);
   color: @FONT_LIGHT;
-  font-size: 25px;
-  opacity: 0.5;
-  transition: all 0.5s;
 }
 
-.add:hover {
-  opacity: 1;
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
+.menuSelect :global(.Select-option.is-selected), .menuSelect :global(.Select-option.is-focused) {background: @THEME_MENU_DARK;}
 
-.thumbnail:hover .caption > span {
-  -webkit-animation: zoomIn 0.5s forwards; /* Chrome, Opera 15+, Safari 5+ */
-          animation: zoomIn 0.5s forwards; /* Chrome, Firefox 16+, IE 10+, Opera */
-}
+/****************************** FORM ******************************/
 
-@-webkit-keyframes zoomIn {
-  0%   { 
-    -webkit-transform: scale(0.25) translateY(-50%);
-        -ms-transform: scale(0.25) translateY(-50%);
-            transform: scale(0.25) translateY(-50%); 
-  }
-  100% { 
-    -webkit-transform: scale(1) translateY(-50%);
-        -ms-transform: scale(1) translateY(-50%);
-            transform: scale(1) translateY(-50%); 
-  }
-}
-@keyframes zoomIn {
-  0%   { 
-    -webkit-transform: scale(0.25) translateY(-50%);
-        -ms-transform: scale(0.25) translateY(-50%);
-            transform: scale(0.25) translateY(-50%); 
-  }
-  100% { 
-    -webkit-transform: scale(1) translateY(-50%);
-        -ms-transform: scale(1) translateY(-50%);
-            transform: scale(1) translateY(-50%); 
-  }
+input { 
+  width: 100%; 
+  padding: 5px 10px;
 }

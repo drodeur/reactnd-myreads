@@ -9,6 +9,7 @@ import FontAwesome from 'react-fontawesome';
 import Shelf from 'project-root/components/Shelf';
 
 import classname from 'classname';
+import home from 'project-pages/less/home';
 import theme from 'project-theme/less/theme';
 
 export default class DefaultLayout extends Component {
@@ -40,7 +41,7 @@ export default class DefaultLayout extends Component {
           <Shelf key={key} books={this.filterBooks(key)} title={this.context.messages.Home.shelfs[key]} />
         ))}
         <Link to={SEARCH}>
-          <div className={theme.add}>
+          <div className={home.add}>
             <FontAwesome name="plus" size="lg" />
           </div>
         </Link>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import classname from 'classname';
+import home from 'project-pages/less/home';
 import theme from 'project-theme/less/theme';
 
 export default class ShelfBook extends Component {
@@ -21,18 +22,18 @@ export default class ShelfBook extends Component {
     const { authors, imageLinks, title } = this.props;
 
     return (
-      <div className={classname(theme.inline, theme.relative, theme.shelfWrapper)}>
-        <div className={classname(theme.bookCenter)}>
-          <div className={theme.thumbnail} style={{backgroundImage: `url(${imageLinks.thumbnail})`}}>
-            <span className={theme.caption}>
+      <div className={classname(theme.inline, theme.relative, home.shelfWrapper)}>
+        <div className={classname(home.bookCenter)}>
+          <div className={home.thumbnail} style={{backgroundImage: `url(${imageLinks.thumbnail})`}}>
+            <span className={home.caption}>
               <span>
                 {title}
-                {authors.map((author, key) => <span key={key} className={theme.author}>{author}</span>)}
+                {authors.map((author, key) => <span key={key} className={home.author}>{author}</span>)}
               </span>
             </span>
           </div>
         </div>
-        <div className={theme.shelf} />
+        <div className={home.shelf} />
       </div>
     );
   };

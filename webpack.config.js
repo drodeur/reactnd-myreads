@@ -8,6 +8,8 @@ var CORE_DIR = path.resolve(__dirname, 'core/');
 var RESSOURCES_DIR = path.resolve(__dirname, 'ressources/');
 var THEME_DIR = path.resolve(__dirname, 'theme/');
 
+var includeAll = [APP_DIR, CORE_DIR, RESSOURCES_DIR, THEME_DIR];
+
 var config = {
   entry: APP_DIR + '/index.jsx',
   devServer: {
@@ -26,7 +28,7 @@ var config = {
     loaders : [
       {
         test : /\.jsx?/,
-        include : [APP_DIR, CORE_DIR, RESSOURCES_DIR, THEME_DIR],
+        include : includeAll,
         loader: 'babel-loader',
         query: {
           plugins: [
@@ -38,6 +40,7 @@ var config = {
       },
       {
         test: /\.css$/,
+        include: includeAll,
         use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader?module&localIdentName=[hash:base64:5]!resolve-url-loader'
@@ -45,6 +48,7 @@ var config = {
       },
       {
         test: /\.less\.lib$/,
+        include: includeAll,
         use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader!resolve-url-loader!less-loader'
@@ -52,6 +56,7 @@ var config = {
       },
       {
         test: /\.less$/,
+        include: includeAll,
         use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader?module&localIdentName=[hash:base64:5]!resolve-url-loader!less-loader'
