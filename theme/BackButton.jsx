@@ -6,7 +6,7 @@ import FontAwesome from 'react-fontawesome';
 
 import topbar from 'project-theme/less/topbar';
 
-export default class TopbarItem extends Component {
+export default class BackButton extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   };

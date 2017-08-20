@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import 'url-search-params-polyfill';
 import { SEARCH } from 'project-routes/path';
 
 import FontAwesome from 'react-fontawesome';
@@ -35,7 +34,7 @@ export default class SearchBar extends Component {
 
     action({
       pathname: SEARCH,
-      search: `?q=${value}`
+      search: (value && `?q=${value}`) || ''
     });
   }
 

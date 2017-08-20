@@ -17,7 +17,9 @@ body {
 .center {text-align: center;}
 .clear {clear: both;}
 .content {margin-top: 50px;}
+.emphasis {border-bottom: 2px solid @PRIMARY_COLOR;}
 .inline {display: inline-block;}
+.paddingUD {padding: 20px 0;}
 .overflow {overflow: hidden;}
 .relative {position: relative;}
 
@@ -66,6 +68,29 @@ body {
 }
 
 .menuSelect :global(.Select-option.is-selected), .menuSelect :global(.Select-option.is-focused) {background: @THEME_MENU_DARK;}
+
+/*************************** NOT FOUND ****************************/
+
+.bigSpinner.spinner {
+  width: 200px;
+  height: 200px;
+}
+
+.spinner {
+  position: relative;
+  margin: 0 auto;
+  width: 75px;
+  height: 75px;
+}
+
+.spinner :global(.react-spinner_bar) {background-color: @FONT_DARK;}
+
+.noResult {
+  width: 275px;
+  height: 275px;
+  margin: 15px auto;
+  background: url('../images/not-found-robot.png') no-repeat;
+}
 
 /****************************** FORM ******************************/
 
