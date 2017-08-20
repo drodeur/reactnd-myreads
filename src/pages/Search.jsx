@@ -49,8 +49,8 @@ export default class DefaultLayout extends Component {
       });
 
       if(!!query) {
-        BooksAPI.search(query, 20).then(books => this.state.querying && this.setState({ 
-          books: (Array.isArray(books) && books) || [],
+        BooksAPI.search(query, 20).then(data => this.state.lastQuery === data.query && this.setState({ 
+          books: (Array.isArray(data.books) && data.books) || [],
           querying: false
         }));
       } else {
