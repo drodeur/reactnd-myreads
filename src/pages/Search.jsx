@@ -10,12 +10,13 @@ import Spinner from 'react-spinner';
 import classname from 'classname';
 import theme from 'project-theme/less/theme';
 
-export default class DefaultLayout extends Component {
+export default class Search extends Component {
   static propTypes = {
     children: PropTypes.any
   };
 
   static contextTypes = {
+    books: PropTypes.array.isRequired,
     messages: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired
   };

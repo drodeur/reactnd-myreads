@@ -8,6 +8,7 @@ import theme from 'project-theme/less/theme';
 export default class ShelfBook extends Component {
   static propTypes = {
     authors: PropTypes.array,
+    id: PropTypes.string.isRequired,
     imageLinks: PropTypes.shape({
       thumbnail: PropTypes.string.isRequired
     }),
@@ -15,7 +16,10 @@ export default class ShelfBook extends Component {
   };
 
   static contextTypes = {
-    messages: PropTypes.object.isRequired
+    messages: PropTypes.object.isRequired,
+    onSelect: PropTypes.func.isRequired,
+    onUnselect: PropTypes.func.isRequired,
+    selection: PropTypes.array.isRequired
   };
 
   extractImage() {
@@ -29,12 +33,24 @@ export default class ShelfBook extends Component {
     return style;
   }
 
+  isActive() {
+    const { id } = this.props;
+    return this.context.selection.filter(_id => _id === id).length > 0;
+  }
+
+  onClick() {
+    const { id } = this.props;
+    !this.isActive() 
+            ? this.context.onSelect(id) 
+            : this.context.onUnselect(id);
+  }
+
   render() {
     const { authors, title } = this.props;
 
     return (
       <div className={classname(theme.inline, theme.relative, home.shelfWrapper)}>
-        <div className={classname(home.bookCenter)}>
+        <div onClick={this.onClick.bind(this)} className={classname(home.bookCenter, this.isActive() && home.active)}>
           <div className={home.thumbnail} style={this.extractImage()}>
             <span className={home.caption}>
               <span>

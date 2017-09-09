@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classname from 'classname';
 import theme from 'project-theme/less/theme';
 
-export default class DefaultLayout extends Component {
+export default class Preview extends Component {
   static propTypes = {
     children: PropTypes.any
   };

@@ -1,5 +1,10 @@
 export default {
   'fr-CA': {
+    'match': '{count} dans {name}',
+    'unclassified': 'Non classé',
+    'youHaveSelected': 'Vous avez sélectionné :',
+
+
     'shelfs': {
       'currentlyReading': 'Ce que je lis',
       'read': 'Ce que j\'ai lu',
@@ -7,6 +12,10 @@ export default {
     }
   },
   'en-US': {
+    'match': '{count} in {name}',
+    'unclassified': 'Unclassified',
+    'youHaveSelected': 'You have selected :',
+
     'shelfs': {
       'currentlyReading': 'Currently Reading',
       'read': 'Read',

@@ -1,8 +1,11 @@
 @import url('variables.less');
 
 html {
+  position: relative;
   box-sizing: border-box;
 }
+
+html, body {min-height: 100%;}
 
 *, *:before, *:after {
   box-sizing: inherit;
@@ -14,6 +17,19 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+html:after {
+  position: absolute;
+  content: '';
+  display: block;
+  background: url(../images/soft-argile.jpg) center center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+}
+
 .center {text-align: center;}
 .clear {clear: both;}
 .content {margin-top: 50px;}
@@ -23,6 +39,25 @@ body {
 .overflow {overflow: hidden;}
 .relative {position: relative;}
 
+.primary {
+  background: @PRIMARY_COLOR;
+  border: 1px solid darken(@PRIMARY_COLOR, 20%);
+}
+
+.primary:hover, .primary:active, .primary:focus {
+  background: darken(@PRIMARY_COLOR, 20%) !important;
+  border: 1px solid darken(@PRIMARY_COLOR, 40%) !important;
+}
+
+.secondary {
+  background: @SECONDARY_COLOR;
+  border: 1px solid darken(@SECONDARY_COLOR, 20%);
+}
+
+.secondary:hover, .secondary:active, .secondary:focus {
+  background: lighten(@SECONDARY_COLOR, 20%) !important;
+  border: 1px solid @SECONDARY_COLOR !important;
+}
 
 /****************************** TITLE *****************************/
 
@@ -98,6 +133,23 @@ input {
   width: 100%; 
   padding: 5px 10px;
 }
+
+/************************* SHELF MANAGER **************************/
+.shelfManager {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 2;
+  padding: 20px;
+  background: @BACKGROUND_DARK;
+  color: @FONT_LIGHT;
+  text-align: center;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.shelfManager input {text-align: left;}
+
 
 @media screen and (max-width: 768px) {
   .content {margin-top: 90px;}

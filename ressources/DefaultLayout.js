@@ -1,8 +1,10 @@
 export default {
   'fr-CA': {
+    'cancel': 'Annuler',
     'imageNotFound': 'Image Indisponible',
     'siteName': 'Lectures',
     'searchBy': 'Chercher par auteur ou par titre...',
+    'transfer': 'Transférer',
 
     'noResult': {
       'title': 'Désolé, aucun résultat trouvé pour {name}',
@@ -10,9 +12,11 @@ export default {
     }
   },
   'en-US': {
+    'cancel': 'Cancel',
     'imageNotFound': 'Image Not Found',
     'siteName': 'MyReads',
     'searchBy': 'Search by author or title...',
+    'transfer': 'Transfer',
 
     'noResult': {
       'title': 'Sorry we couldn\'t find any matches for {name}',

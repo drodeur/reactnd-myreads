@@ -33,6 +33,7 @@
   margin: 5px auto;
   width: 125px;
   height: 200px;
+  background-color: @BACKGROUND_LIGHT;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -78,9 +79,12 @@
   float: none;
   display: inline-block;
   vertical-align: top;
+  cursor: pointer;
   background-color: @BACKGROUND_LIGHT;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
 }
+
+.bookCenter.active {background-color: @PRIMARY_COLOR;}
 
 .add {
   position: fixed;
