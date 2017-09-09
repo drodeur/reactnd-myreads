@@ -1,20 +1,11 @@
 @import url('variables.less');
 
+html, body {min-height: 100%;}
+*, *:before, *:after {box-sizing: inherit;}
+
 html {
   position: relative;
   box-sizing: border-box;
-}
-
-html, body {min-height: 100%;}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
 }
 
 html:after {
@@ -30,11 +21,20 @@ html:after {
   opacity: 0.5;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn {margin: 5px;}
 .center {text-align: center;}
 .clear {clear: both;}
 .content {margin-top: 50px;}
 .emphasis {border-bottom: 2px solid @PRIMARY_COLOR;}
 .inline {display: inline-block;}
+.marginSUD {margin: 10px 0;}
+.marginUD {margin: 20px 0;}
 .paddingUD {padding: 20px 0;}
 .overflow {overflow: hidden;}
 .relative {position: relative;}
@@ -138,17 +138,20 @@ input {
 .shelfManager {
   position: fixed;
   top: 50%;
-  right: 0;
+  right: -300px;
   z-index: 2;
   padding: 20px;
-  background: @BACKGROUND_DARK;
+  background: lighten(@BACKGROUND_DARK, 5%);
+  border: 2px solid lighten(@THEME_MENU_DARK, 15%);
+  border-right: none;
   color: @FONT_LIGHT;
   text-align: center;
+  transition: all 0.5s ease-in-out;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
 
-.shelfManager input {text-align: left;}
+.shelfManager.active {right: 0;}
 
 
 @media screen and (max-width: 768px) {

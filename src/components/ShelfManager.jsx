@@ -37,14 +37,20 @@ export default class ShelfManager extends Component {
     this.setState({options});
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(!nextProps.selection.length) {
+      this.setState({option: null});
+    }
+  }
+
   handleChange(option) {
     this.setState({option: option.value});
   }
 
   onTransfer() {
     const { option } = this.state;
-    
-    if(!!state) {
+
+    if(!!option && this.props.selection.length) {
       // TODO
     }
   }
@@ -62,7 +68,7 @@ export default class ShelfManager extends Component {
     }
 
     return (
-      <div key={name}>
+      <div key={name} className={theme.marginSUD}>
         <FormattedMessage id="Home.match" values={{ 
           count, 
           name: <span className={theme.emphasis}>{displayName}</span> 
@@ -79,20 +85,20 @@ export default class ShelfManager extends Component {
       return match && match.shelf || 'unclassified';
     });
 
-    if(!selection.length) {
-      return false;
-    }
-
     return (
-      <div className={theme.shelfManager}>
-        <div>{this.context.messages.Home.youHaveSelected}</div>
+      <div className={classname(theme.shelfManager, !!selection.length && theme.active)}>
+        <div className={theme.marginSUD}>
+          <div>{this.context.messages.Home.youHaveSelected}</div>
+        </div>
         {Object.keys(this.context.messages.Home.shelfs).map(name => this.renderShelfRecap(inCart, name, this.context.messages.Home.shelfs[name]))}
         {this.renderShelfRecap(inCart, 'unclassified', this.context.messages.Home.unclassified)}
-        <div className="text-left">
-          <Select className={theme.menuSelect} value={this.state.option} options={this.state.options} onChange={this.handleChange.bind(this)} clearable={false} autosize={false} />
+        <div className={theme.marginUD}>
+          <div className="text-left">
+            <Select className={theme.menuSelect} value={this.state.option} options={this.state.options} onChange={this.handleChange.bind(this)} clearable={false} autosize={false} />
+          </div>
         </div>
-        <button onClick={this.onTransfer.bind(this)} className={classname('btn btn-primary', theme.primary)}>{this.context.messages.DefaultLayout.transfer}</button>
-        <button onClick={this.onCancel.bind(this)} className={classname('btn btn-primary', theme.secondary)}>{this.context.messages.DefaultLayout.cancel}</button>
+        <button onClick={this.onTransfer.bind(this)} className={classname('btn btn-primary', theme.primary, theme.btn)}>{this.context.messages.DefaultLayout.transfer}</button>
+        <button onClick={this.onCancel.bind(this)} className={classname('btn btn-primary', theme.secondary, theme.btn)}>{this.context.messages.DefaultLayout.cancel}</button>
       </div>
     );
   };

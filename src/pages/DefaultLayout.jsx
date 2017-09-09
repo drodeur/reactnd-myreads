@@ -58,6 +58,10 @@ export default class DefaultLayout extends Component {
     this.setState({selection});
   }
 
+  onTransfert(shelf) {
+    // TODO
+  }
+
   onUnselect(id) {
     this.setState({selection: this.filterSelection(id)});
   }
