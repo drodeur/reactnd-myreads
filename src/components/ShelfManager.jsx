@@ -10,9 +10,10 @@ import theme from 'project-theme/less/theme';
 
 export default class ShelfManager extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired,
+    books: PropTypes.object.isRequired,
     onCancelSelection: PropTypes.func.isRequired,
-    selection: PropTypes.array.isRequired
+    onTransfert: PropTypes.func.isRequired,
+    selection: PropTypes.object.isRequired
   };
 
   static contextTypes = {
@@ -38,7 +39,7 @@ export default class ShelfManager extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(!nextProps.selection.length) {
+    if(!Object.keys(nextProps.selection).length) {
       this.setState({option: null});
     }
   }
@@ -50,8 +51,9 @@ export default class ShelfManager extends Component {
   onTransfer() {
     const { option } = this.state;
 
-    if(!!option && this.props.selection.length) {
-      // TODO
+    if(!!option && Object.keys(this.props.selection).length) {
+      this.props.onTransfert(option);
+      this.setState({option: null});
     }
   }
 
@@ -80,13 +82,13 @@ export default class ShelfManager extends Component {
   render() {
     const { books, selection } = this.props;
     
-    const inCart = selection.map(id => {
-      const match = books.find(book => book.id === id);
-      return match && match.shelf || 'unclassified';
+    const inCart = Object.keys(selection).map(id => {
+      const match = Object.keys(books).find(_id => _id === id);
+      return match && books[match].shelf || 'unclassified';
     });
 
     return (
-      <div className={classname(theme.shelfManager, !!selection.length && theme.active)}>
+      <div className={classname(theme.shelfManager, !!Object.keys(selection).length && theme.active)}>
         <div className={theme.marginSUD}>
           <div>{this.context.messages.Home.youHaveSelected}</div>
         </div>

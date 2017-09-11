@@ -19,7 +19,7 @@ export default class ShelfBook extends Component {
     messages: PropTypes.object.isRequired,
     onSelect: PropTypes.func.isRequired,
     onUnselect: PropTypes.func.isRequired,
-    selection: PropTypes.array.isRequired
+    selection: PropTypes.object.isRequired
   };
 
   extractImage() {
@@ -35,14 +35,13 @@ export default class ShelfBook extends Component {
 
   isActive() {
     const { id } = this.props;
-    return this.context.selection.filter(_id => _id === id).length > 0;
+    return !!this.context.selection[id];
   }
 
   onClick() {
-    const { id } = this.props;
     !this.isActive() 
-            ? this.context.onSelect(id) 
-            : this.context.onUnselect(id);
+            ? this.context.onSelect(this.props) 
+            : this.context.onUnselect(this.props);
   }
 
   render() {

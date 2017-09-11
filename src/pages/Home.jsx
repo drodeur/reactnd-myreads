@@ -17,13 +17,13 @@ export default class Home extends Component {
   };
 
   static contextTypes = {
-    books: PropTypes.array.isRequired,
+    books: PropTypes.object.isRequired,
     messages: PropTypes.object.isRequired
   };
 
   filterBooks(shelf) {
     const { books } = this.context;
-    return books.filter(book => book.shelf === shelf);
+    return Object.values(books).filter(book => book.shelf === shelf);
   }
 
   render() {

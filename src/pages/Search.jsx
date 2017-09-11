@@ -16,7 +16,6 @@ export default class Search extends Component {
   };
 
   static contextTypes = {
-    books: PropTypes.array.isRequired,
     messages: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired
   };

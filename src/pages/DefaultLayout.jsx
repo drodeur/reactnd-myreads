@@ -16,27 +16,31 @@ export default class DefaultLayout extends Component {
   };
 
   static childContextTypes = {
-    books: PropTypes.array.isRequired,
+    books: PropTypes.object.isRequired,
     onSelect: PropTypes.func.isRequired,
     onUnselect: PropTypes.func.isRequired,
-    selection: PropTypes.array.isRequired
+    selection: PropTypes.object.isRequired
   };
 
   state = {
-    books: [],
+    books: {},
     isFetching: true,
-    selection: []
+    selection: {}
   };
 
   componentDidMount() {
-    BooksAPI.getAll().then(books => this.setState({ 
-      books,
-      isFetching: false
-    }));
-  }
+    BooksAPI.getAll().then(_books => {
+      let books = {};
 
-  filterSelection(id) {
-    return this.state.selection.filter(_id => _id !== id);
+      for(const book of _books) {
+        books[book.id] = book;
+      }
+
+      this.setState({ 
+        books,
+        isFetching: false
+      });
+    });
   }
 
   getChildContext() {
@@ -49,21 +53,25 @@ export default class DefaultLayout extends Component {
   }
 
   onCancelSelection() {
-    this.setState({selection: []});
+    this.setState({selection: {}});
   }
 
-  onSelect(id) {
-    let selection = this.filterSelection(id);
-    selection.push(id);
-    this.setState({selection});
+  onSelect(obj) {
+    this.setState({selection: {
+      ...this.state.selection,
+      [obj.id]: obj
+    }});
   }
 
   onTransfert(shelf) {
-    // TODO
+    console.log(shelf);
+
+    this.onCancelSelection();
   }
 
-  onUnselect(id) {
-    this.setState({selection: this.filterSelection(id)});
+  onUnselect(obj) {
+    delete this.state.selection[obj.id];
+    this.setState({selection: this.state.selection});
   }
 
   render() {
@@ -77,13 +85,9 @@ export default class DefaultLayout extends Component {
       <div className="col-sm-12">
         <Topbar />
         <div className={theme.content}>
-          {
-            React.cloneElement(this.props.children, {
-              books
-            })
-          }
+          {this.props.children}
         </div>
-        <ShelfManager books={books} selection={this.state.selection} onCancelSelection={this.onCancelSelection.bind(this)} />
+        <ShelfManager books={books} selection={this.state.selection} onCancelSelection={this.onCancelSelection.bind(this)} onTransfert={this.onTransfert.bind(this)} />
       </div>
     );
   };
