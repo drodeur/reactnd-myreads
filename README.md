@@ -8,4 +8,4 @@
 - A browser window with the working app should open
 
 ## Important
-The application use browser langage to set the locale. Currently, the application support only English and French.
+The application uses browser language to set the locale. Currently, the application support only English and French.
