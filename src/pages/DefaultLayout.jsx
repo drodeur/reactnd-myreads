@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { UNCLASSIFIED } from 'project-root/Constants';
 import * as BooksAPI from 'project-root/BooksAPI';
 
 import ShelfManager from 'project-root/components/ShelfManager';
@@ -20,6 +21,10 @@ export default class DefaultLayout extends Component {
     onSelect: PropTypes.func.isRequired,
     onUnselect: PropTypes.func.isRequired,
     selection: PropTypes.object.isRequired
+  };
+
+  static contextTypes = {
+    router: PropTypes.object.isRequired
   };
 
   state = {
@@ -52,6 +57,11 @@ export default class DefaultLayout extends Component {
     };
   }
 
+  isHomePage() {
+    const { router } = this.context;
+    return router.route.location.pathname === '/';
+  }
+
   onCancelSelection() {
     this.setState({selection: {}});
   }
@@ -64,8 +74,20 @@ export default class DefaultLayout extends Component {
   }
 
   onTransfert(shelf) {
-    console.log(shelf);
+    let { books } = this.state;
 
+    for(let book of Object.values(this.state.selection)) {
+      BooksAPI.update(book, shelf);
+      books[book.id] = {
+        ...book, shelf
+      };
+    }
+
+    if(!this.isHomePage()) {
+      this.context.router.history.push('/');
+    }
+
+    this.setState({ books });
     this.onCancelSelection();
   }
 

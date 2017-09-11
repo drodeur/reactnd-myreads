@@ -2,6 +2,7 @@ export default {
   'fr-CA': {
     'cancel': 'Annuler',
     'imageNotFound': 'Image Indisponible',
+    'oooops': 'Oooops',
     'siteName': 'Lectures',
     'searchBy': 'Chercher par auteur ou par titre...',
     'transfer': 'Transférer',
@@ -14,6 +15,7 @@ export default {
   'en-US': {
     'cancel': 'Cancel',
     'imageNotFound': 'Image Not Found',
+    'oooops': 'Oooops',
     'siteName': 'MyReads',
     'searchBy': 'Search by author or title...',
     'transfer': 'Transfer',

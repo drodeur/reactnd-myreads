@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { UNCLASSIFIED } from 'project-root/Constants';
 import { FormattedMessage } from 'react-intl';
 
 import Select from 'react-select';
@@ -32,7 +33,7 @@ export default class ShelfManager extends Component {
 
     options.push({
       label: this.context.messages.Home.unclassified,
-      value: 'unclassified'
+      value: UNCLASSIFIED
     });
 
     this.setState({options});
@@ -84,7 +85,7 @@ export default class ShelfManager extends Component {
     
     const inCart = Object.keys(selection).map(id => {
       const match = Object.keys(books).find(_id => _id === id);
-      return match && books[match].shelf || 'unclassified';
+      return match && books[match].shelf || UNCLASSIFIED;
     });
 
     return (
@@ -93,7 +94,7 @@ export default class ShelfManager extends Component {
           <div>{this.context.messages.Home.youHaveSelected}</div>
         </div>
         {Object.keys(this.context.messages.Home.shelfs).map(name => this.renderShelfRecap(inCart, name, this.context.messages.Home.shelfs[name]))}
-        {this.renderShelfRecap(inCart, 'unclassified', this.context.messages.Home.unclassified)}
+        {this.renderShelfRecap(inCart, UNCLASSIFIED, this.context.messages.Home.unclassified)}
         <div className={theme.marginUD}>
           <div className="text-left">
             <Select className={theme.menuSelect} value={this.state.option} options={this.state.options} onChange={this.handleChange.bind(this)} clearable={false} autosize={false} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import EmptyShelf from './EmptyShelf';
 import ShelfBook from './ShelfBook';
 
 import classname from 'classname';
@@ -16,14 +17,24 @@ export default class Shelf extends Component {
     messages: PropTypes.object.isRequired
   };
 
+  renderBooks() {
+    const { books } = this.props;
+
+    if(!books.length) {
+      return <EmptyShelf />;
+    }
+
+    return books.map(book => <ShelfBook key={book.id} {...book} />);
+  }
+
   render() {
-    const { books, title } = this.props;
+    const { title } = this.props;
 
     return (
       <div className="row">
         <h2 className={classname('col-sm-12', theme.subtitle)}>{title}</h2>
         <div className={classname(theme.center, theme.clear, theme.overflow)}>
-          {books.map(book => <ShelfBook key={book.id} {...book} />)}
+          {this.renderBooks()}
         </div>
       </div>
     );

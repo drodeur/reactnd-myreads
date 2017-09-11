@@ -1,6 +1,7 @@
 export default {
   'fr-CA': {
     'match': '{count} dans {name}',
+    'noBookInThisShelf': 'Il n\'y a aucun livre dans cette étagère.',
     'unclassified': 'Non classé',
     'youHaveSelected': 'Vous avez sélectionné :',
 
@@ -13,6 +14,7 @@ export default {
   },
   'en-US': {
     'match': '{count} in {name}',
+    'noBookInThisShelf': 'There is no book in this shelf.',
     'unclassified': 'Unclassified',
     'youHaveSelected': 'You have selected :',
 

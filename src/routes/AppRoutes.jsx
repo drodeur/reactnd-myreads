@@ -21,7 +21,6 @@ export default class AppRoutes extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path={`${PATH.PREVIEW}/:id`} component={Preview} />
         <Route exact path={PATH.SEARCH} component={Search} />
         <Route component={() => <Redirect to="/" />} />
       </Switch>

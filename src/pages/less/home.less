@@ -70,18 +70,33 @@
 .thumbnail:hover .caption {display: block;}
 .thumbnail .author + .author {margin-top: 0;}
 
-.bookCenter {
+.emptyBook, .bookCenter {
   position: relative;
   z-index: 2;
-  width: 135px;
-  height: 210px;
   margin: 0 20px;
   float: none;
   display: inline-block;
   vertical-align: top;
-  cursor: pointer;
   background-color: @BACKGROUND_LIGHT;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
+}
+
+.emptyBook {
+  padding: 20px 50px;
+  width: 235px;
+  height: 150px;
+  color: lighten(@FONT_DARK, 40%);
+}
+
+.emptyBook h1 {
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.bookCenter {
+  width: 135px;
+  height: 210px;
+  cursor: pointer;
 }
 
 .bookCenter.active {background-color: @PRIMARY_COLOR;}
